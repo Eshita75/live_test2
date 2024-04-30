@@ -1,182 +1,76 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-main() {
-  runApp(MyApp());
+void main() {
+  runApp(ProfileApp());
 }
 
-class MyApp extends StatelessWidget {
+class ProfileApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Hello world',
-      home: Home(),
+      debugShowCheckedModeBanner: false,
+      home: ProfilePage(),
     );
   }
 }
 
-class Home extends StatelessWidget {
+class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: Text(
-            'Home Screen',
-            style: TextStyle(color: Colors.black),
-          ),
-          leading: Icon(
-            Icons.home_filled,
-            color: Colors.black,
-          ), //TODO: Leading Area
-        ),
-        body: Center(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: TextField(
-                  onChanged: (value){
-                    print(value);
-                  },
-                  controller: TextEditingController(),
-                  //enabled: false,
-                  maxLength: 10,
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.orange
-                  ),
-                  decoration: InputDecoration(
-                    hintText: 'Enter your email',
-                    //label: Text('Email'),
-                    labelText: 'Email',
-                    hintStyle: TextStyle(
-                      fontSize: 23,
-                      fontWeight: FontWeight.w400,
-                    ),
-
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(width: 1)
-                    ),
-
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(width: 5, color: Colors.pink)
-                    ),
-
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide(width: 2, color: Colors.black)
-                    ),
-
-                    disabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(width: 4, color: Colors.grey)
-                    ),
-                    fillColor: Colors.orange,
-                    filled: true,
-
-                    prefixIcon: Icon(Icons.add),
-                    prefixIconColor: Colors.green,
-                    suffixIcon: Icon(Icons.add),
-                    suffixIconColor: Colors.green,
-
-                  ),
+              Text(
+                "Profile",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontStyle: FontStyle.normal,
+                  fontSize: 24,
                 ),
               ),
-
-
-
-              Center(
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  //alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Colors.green,
-                      //borderRadius: BorderRadius.circular(20),
-                      //border: Border.all(width: 4, color: Colors.black)
-                      border: Border(
-                          top: BorderSide(width: 4, color: Colors.black),
-                          bottom: BorderSide(width: 4, color: Colors.deepOrange)
-                      ),
-                      image: DecorationImage(
-                          image: AssetImage('images/oskar.jpg'),
-                          fit: BoxFit.cover
-                      ),
-
-                      boxShadow: [
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.9),
-                            spreadRadius: 5,
-                            blurRadius:7,
-                            offset: Offset(0, 3)
-                        )
-                      ]
-                  ),
-
-                  child: Text('Oskar', style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black
-                  ),),
+              SizedBox(height: 20.0),
+              CircleAvatar(
+                radius: 80,
+                backgroundImage: AssetImage('assets/flowers.jpeg'),
+              ),
+              SizedBox(height: 20.0),
+              Text(
+                'Matilda Brown',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-
-              // Padding(
-              //   padding: const EdgeInsets.all(16.0),
-              //   child: TextFormField(
-              //     //validator: ,
-              //     controller: TextEditingController(),
-              //     //enabled: false,
-              //     maxLength: 10,
-              //     style: TextStyle(
-              //         fontSize: 24,
-              //         color: Colors.orange
-              //     ),
-              //     decoration: InputDecoration(
-              //       hintText: 'Enter your email',
-              //       //label: Text('Email'),
-              //       labelText: 'Email',
-              //       hintStyle: TextStyle(
-              //         fontSize: 23,
-              //         fontWeight: FontWeight.w400,
-              //       ),
-              //
-              //       border: OutlineInputBorder(
-              //           borderRadius: BorderRadius.circular(10),
-              //           borderSide: BorderSide(width: 6)
-              //       ),
-              //
-              //       focusedBorder: OutlineInputBorder(
-              //           borderRadius: BorderRadius.circular(16),
-              //           borderSide: BorderSide(width: 4, color: Colors.pink)
-              //       ),
-              //
-              //       enabledBorder: OutlineInputBorder(
-              //           borderRadius: BorderRadius.circular(20),
-              //           borderSide: BorderSide(width: 4, color: Colors.black)
-              //       ),
-              //
-              //       disabledBorder: OutlineInputBorder(
-              //           borderRadius: BorderRadius.circular(20),
-              //           borderSide: BorderSide(width: 4, color: Colors.grey)
-              //       ),
-              //       fillColor: Colors.grey,
-              //       filled: true,
-              //
-              //       prefixIcon: Icon(Icons.add),
-              //       prefixIconColor: Colors.green,
-              //       suffixIcon: Icon(Icons.add),
-              //       suffixIconColor: Colors.green,
-              //
-              //     ),
-              //   ),
-              // )
+              SizedBox(height: 10.0),
+              Text(
+                "matildabrown@mail.com",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontStyle: FontStyle.normal,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 20.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Text(
+                      "I've added professional information about Sophia as a software engineer. This includes her job title, a brief description of her experience and skills, as well as icons for contacting her via email, phone, accessing her personal website, and downloading her resume. Adjust the details and icons as necessary for your specific use case.",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
-        )
+        ),
+      ),
     );
   }
 }
