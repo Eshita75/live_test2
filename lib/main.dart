@@ -1,73 +1,61 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ProfileApp());
+  runApp(ProfileScreen());
 }
 
-class ProfileApp extends StatelessWidget {
+class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfilePage(),
-    );
-  }
-}
+      home: Scaffold(
+        body: Center(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Profile", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 24),),
 
-class ProfilePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                "Profile",
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontStyle: FontStyle.normal,
-                  fontSize: 24,
-                ),
-              ),
-              SizedBox(height: 20.0),
-              CircleAvatar(
-                radius: 80,
-                backgroundImage: AssetImage('assets/download.png'),
-              ),
-              SizedBox(height: 20.0),
-              Text(
-                'Matilda Brown',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Text(
-                "matildabrown@mail.com",
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontStyle: FontStyle.normal,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(height: 20.0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: Text(
-                      "I've added professional information about Sophia as a software engineer. This includes her job title, a brief description of her experience and skills, as well as icons for contacting her via email, phone, accessing her personal website, and downloading her resume. Adjust the details and icons as necessary for your specific use case.",
-                      textAlign: TextAlign.center,
-                    ),
+                      SizedBox(height: 65),
+
+                      CircleAvatar(
+                        radius: constraints.maxWidth * 0.2,
+                        backgroundImage: AssetImage('images/pic.jpeg'), // Add your image asset here
+                      ),
+                      SizedBox(height: 20),
+                      Text(
+                        'John Doe',
+                        style: TextStyle(
+                          fontSize: constraints.maxWidth * 0.05,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'john.doe@mail.com',
+                        style: TextStyle(
+                          fontSize: constraints.maxWidth * 0.04,
+                        ),
+                      ),
+                      SizedBox(height: 20),
+
+                      Text(textAlign: TextAlign.center,
+                        'Meet John Doe, a dynamic software engineer with a passion for crafting elegant solutions to complex technological challenges. With a robust background in [mention your areas of expertise or specialization, e.g., web development, machine learning, mobile applications], [Your Name] brings a unique blend of technical prowess and creative flair to every project.',
+                        style: TextStyle(
+                          fontSize: constraints.maxWidth * 0.04,
+                        ),
+                      )
+
+                    ],
                   ),
-                ],
-              ),
-            ],
+                ),
+              );
+            },
           ),
         ),
       ),
